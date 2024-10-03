@@ -21,8 +21,8 @@ export default function HeaderBar() {
 
   },[])
 	return (
-		<header className={`fixed w-full bg-primary bg-opacity-90 backdrop-blur-lg  px-10 py-3`}>
-			<nav className={`flex-initial w-64 p-3 items-center justify-between md:justify-around`}>
+		<header className={`fixed w-full bg-primary bg-opacity-90 backdrop-blur-lg  px-10 py-3 bg-blue-500`}>
+			<nav className={`flex-initial w-64 p-3 items-center justify-between md:justify-around `}>
 				<Link href={"/"}>
 					<div className="cursor-pointer">
 						<Logo />
