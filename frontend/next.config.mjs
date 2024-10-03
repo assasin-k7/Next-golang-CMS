@@ -1,4 +1,14 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {};
+const nextConfig = {
+  async rewrites() {
+    return [
+      {
+        source: "/api/:slug*",
+        destination: `${process.env.API_URL}/api/:slug*`,
+      }
+
+    ];
+  }
+};
 
 export default nextConfig;
