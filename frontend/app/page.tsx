@@ -1,5 +1,4 @@
 
-import { useState, useEffect } from "react";
 import { BRAND_NAME } from "./config";
 
 export default async function Home() {
@@ -18,7 +17,7 @@ export default async function Home() {
       return error
     }
   }
-  console.log(items)
+  console.log(`this is ${items}`)
   return (
     <div className="bg-blue-300">
       <section className={`min-h-screen md:bg-fixed bg-scroll landscape:bg-top`}>
