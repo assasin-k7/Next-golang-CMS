@@ -1,6 +1,7 @@
 package router
 
 import (
+	brandRoutes "backend/internal/routes/brand"
 	pageRoutes "backend/internal/routes/page"
 
 	"github.com/gofiber/fiber/v2"
@@ -15,4 +16,6 @@ func SetupRoutes(app *fiber.App) {
 	})
 
 	pageRoutes.SetupRoutes(api)
+	brandRoutes.SetupBrandRoutes(api)
+
 }
