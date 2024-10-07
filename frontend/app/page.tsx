@@ -1,9 +1,17 @@
-
+import ItemCard from "@/components/ui/ItemCard";
 import { BRAND_NAME } from "./config";
-
+import {Item} from "@/types/types"
+type GetItemsResponse = {
+	errorMessage: string;
+	hasError: boolean;
+	metadata: null | {
+		[key: string]: any;
+	};
+	payload: null | Item[];
+};
 export default async function Home() {
-  const items = await getItems();
-  async function getItems() {
+  const items = await getAllItems()
+  async function getAllItems() {
     try{
       const res =  await fetch(`${process.env.API_URL}/api/brand/all`, 
         {
@@ -12,12 +20,14 @@ export default async function Home() {
           }
         }
       )
-      console.log(`this is response ${res}`)
+      if (!res.ok) throw new Error("Failed to fetch data")
+      const data: GetItemsResponse = await res.json();
+      if (data.hasError) throw new Error (data.errorMessage)
+        return data.payload;
     } catch(error) {
-      return error
+      return null
     }
   }
-  console.log(`this is ${items}`)
   return (
     <div className="bg-blue-300">
       <section className={`min-h-screen md:bg-fixed bg-scroll landscape:bg-top`}>
@@ -31,6 +41,11 @@ export default async function Home() {
 
       <section className="p-20">
         <h1 className="text-4xl mb-5 font-bold sm:ml-20">NEW IN</h1>
+        <div className="flex flex-wrap justify-center">
+        {items?.map((item, index) => (
+						<ItemCard key={index} item={item} />
+					))}
+        </div>
       </section>
 
     </div>

@@ -8,17 +8,7 @@ type NavLink = {
   slug: string;
   text: string;
 }
-// const MenuSidebar = () => {
-//   return (
-//     <>
-//       {/* Dark overlay */}
-//       <div onClick={()=>toggleMenu()}>
 
-//       </div>
-//     </>
-//   )
-// }
-// This component is 
 export default function HeaderBar() {
   const [navLinks, setNavLinks] = useState<NavLink[]>([])
   useEffect(() => {
